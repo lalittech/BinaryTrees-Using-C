@@ -15,4 +15,10 @@ void print_2d_util(node *root, int space);
 
 void print_2d(node *root);
 
+void inorder_transversal(node *root);
+
+void preorder_transversal(node *root);
+
+void postorder_transversal(node *root);
+
 #endif
