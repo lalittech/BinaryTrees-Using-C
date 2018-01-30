@@ -12,6 +12,8 @@ node* new_node(int data) {
 	return node;
 }
 
+/*Utility to Print the Binary Tree*/
+
 void print_2d_util(node *root, int space) {
 	if (root == NULL) return;
 	space += HEIGHT;
@@ -50,4 +52,31 @@ void postorder_transversal(node *root) {
 	preorder_transversal(root -> left);
 	preorder_transversal(root -> right);
 	printf("%d ", root -> data);
+}
+
+/*Tree Transversals, Breadth First Search*/
+
+void levelorder_transversal(node *root) {
+
+	/*Find the height of the Tree*/
+	int total_height = height(root);
+	for (int level = 1 ; level <= total_height ; level++)
+		print_level(root, level);
+}
+
+void print_level(node *root, int level) {
+	if (root == NULL) return;
+	if (level == 1)
+		printf("%d ", root -> data);
+	print_level(root -> left, level - 1);
+	print_level(root -> right, level - 1);
+}
+
+int height(node *root) {
+	if (root == NULL) return 0;
+	int l_height = height(root -> left);
+	int r_height = height(root -> right);
+
+	if (l_height > r_height) return (l_height+1);
+	return (r_height+1);
 }
